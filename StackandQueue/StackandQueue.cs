@@ -8,61 +8,52 @@ namespace StackandQueue
 {
     public class StackandQueue
     {
-        //Creating node a top
-        public Node top;
-        public void Push(int newData)
+        Node head;
+        public void Enqueue(int item)
         {
-            Node newNode = new Node(newData);
-            if (this.top != null)
+            Node new_node = new Node(item);
+            if (this.head == null)
             {
-                newNode.next = this.top;
+                this.head = new_node;
             }
-            this.top = newNode;
-            Console.WriteLine("New Node {0} is added ", newNode.data);
-        }
-        //Peek method gives the top most element in stack without removing the element.
-        public void Peek()
-        {
-            if (this.top == null)
+            else
             {
-                Console.WriteLine("No elements present in the stack");
-                return;
+                Node temp = this.head;
+                while (temp.next != null)
+                {
+                    temp = temp.next;
+                }
+                temp.next = new_node;
             }
-            Console.WriteLine("The element after peeking is : " + this.top.data);
+            Console.WriteLine("Inserted into queue : " + new_node.data);
         }
-        //Pop Mthod-Removes the top most element
-        public void Pop()
-        {
-            if (this.top == null)
-            {
-                Console.WriteLine("No elements present in the stack");
-                return;
-            }
-            Peek();
-            this.top = this.top.next;
-        }
-        //Checking the any underflow or overflow occurs
-        public void IsEmpty()
-        {
-            while (this.top != null)
-            {
-                Peek();
-                Pop();
-            }
-        }
+
         public void Display()
         {
-            Node temp = this.top;
-            if (temp == null)
+            Node temp = this.head;
+            if (this.head == null)
             {
-                Console.WriteLine("No values to be added");
+                Console.WriteLine("No element present in the Queue");
                 return;
             }
+            Console.WriteLine("The nodes are : ");
             while (temp != null)
             {
-                Console.WriteLine("Value in te stack " + temp.data);
+
+                Console.Write(temp.data + " ");
                 temp = temp.next;
             }
+
+        }
+
+        internal void Push(int v)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void Pop()
+        {
+            throw new NotImplementedException();
         }
     }
 }
